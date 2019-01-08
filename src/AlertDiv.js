@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const AlertDiv = ({ alert}) => {
   return (
@@ -6,6 +7,10 @@ const AlertDiv = ({ alert}) => {
       Click on this div to see an Alert pop!
     </div>
   )
+}
+
+PropTypes.AlertDiv = {
+  alert: PropTypes.func
 }
 
 export default AlertDiv;

@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import AlertDiv from './AlertDiv';
 import Repos from './Repos';
+import axios from 'axios';
+import PropTypes from 'prop-types';
 
 class App extends Component {
 
@@ -24,11 +26,10 @@ class App extends Component {
   }
 
   getRepos(name) {
-    fetch(`/repos/${name}`)
-    .then(res => res.json())
-    .then(data => {
+    axios.get(`/repos/${name}`)
+    .then(response => {
       this.setState({
-        reps: data,
+        reps: response.data,
         name: ''
       })
     })
@@ -83,6 +84,11 @@ class App extends Component {
       </div>
     );
   }
+}
+
+App.propTypes = {
+  name: PropTypes.string,
+  repos: PropTypes.array
 }
 
 export default App;
